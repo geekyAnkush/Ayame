@@ -1,6 +1,6 @@
-import { NextSeo } from "next-seo";
-import Link from "next/link";
-import React from "react";
+import { NextSeo } from 'next-seo';
+import Link from 'next/link';
+import React from 'react';
 
 const ErrorPage = () => {
   return (
@@ -16,7 +16,7 @@ const ErrorPage = () => {
             <span className="text-lg">
               Welcome to
               <span className="text-primary opacity-300">
-                {" "}
+                {' '}
                 the 404 dimension
               </span>
             </span>
