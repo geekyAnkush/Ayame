@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "../shared/image";
 import Link from "next/link";
-import logo from "../../../public/ayame.svg";
+import logo from "../../../public/ayame.webp";
 import { AiFillGithub } from "react-icons/ai";
 import { BsMessenger, BsTwitter, BsLinkedin } from "react-icons/bs";
 
@@ -37,19 +37,12 @@ const Footer = () => {
             <span className="flex items-center justify-center text-white ">
               <div className="flex">
                 <Image
-                  containerclassname="relative h-[20px] w-[20px] md:h-[24px] md:w-[24px]"
+                  containerclassname="relative h-[24px] w-[24px] md:h-[30px] md:w-[30px] mr-2"
                   layout="fill"
                   src={logo}
                   alt="Ayame"
                   priority
                 />
-                {/* <Image
-                  priority
-                  containerclassname="relative h-[20px] w-[20px] md:h-[25px] md:w-[28px]"
-                  layout="fill"
-                  src={h}
-                  alt="Ayame"
-                /> */}
               </div>
               <span className="text-sm md:text-[20px] 2xl:[30px] font-semibold uppercase">
                 Ayame

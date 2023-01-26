@@ -3,8 +3,7 @@ import { META } from "@consumet/extensions";
 import { IAnimeResult } from "@consumet/extensions/dist/models/types";
 import Link from "next/link";
 import classNames from "classnames";
-import logo from "../../../public/ayame.svg";
-// import h from '../../../public/h.png';
+import logo from "../../../public/ayame.webp";
 import Image from "../shared/image";
 import { FaRandom } from "react-icons/fa";
 import {
@@ -130,19 +129,12 @@ const Header = () => {
           <span className="flex items-center text-white z-10">
             <div className="flex">
               <Image
-                containerclassname="relative h-[20px] w-[20px] md:h-[24px] md:w-[24px]"
+                containerclassname="relative h-[24px] w-[24px] md:h-[30px] md:w-[30px] mr-2"
                 layout="fill"
                 src={logo}
                 alt="Ayame"
                 priority
               />
-              {/* <Image
-                priority
-                containerclassname="relative h-[20px] w-[20px] md:h-[25px] md:w-[28px]"
-                layout="fill"
-                src={h}
-                alt="Ayame"
-              /> */}
             </div>
             <span className="text-sm md:text-[20px] 2xl:[30px] font-semibold uppercase">
               Ayame
