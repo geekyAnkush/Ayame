@@ -41,16 +41,14 @@ const ErrorPage: NextPage<CustomErrorProps, CustomErrorProps> = ({
           </p>
           <p className="text-2xl text-slate-200 mt-4">{`Error: ${err}`}</p>
           <Link href="/">
-            <a>
-              <button
-                type="button"
-                className="transition duration-300 text-base flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 mt-8 hover:bg-primary border-2 border-primary"
-              >
-                <p className="text-lg text-slate-300">
-                  Go back to the old dimension
-                </p>
-              </button>
-            </a>
+            <button
+              type="button"
+              className="transition duration-300 text-base flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 mt-8 hover:bg-primary border-2 border-primary"
+            >
+              <p className="text-lg text-slate-300">
+                Go back to the old dimension
+              </p>
+            </button>
           </Link>
         </div>
       </div>

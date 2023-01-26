@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import { PlayIcon } from '@heroicons/react/outline';
-import { RecentType } from 'types/types';
+import React from "react";
+import Link from "next/link";
+import { PlayIcon } from "@heroicons/react/outline";
+import { RecentType } from "types/types";
 
 type WatchLinkProps = {
   isExist: boolean;
@@ -19,9 +19,9 @@ const WatchLink = (props: WatchLinkProps): JSX.Element => {
         isExist ? currentWatchEpisode?.episodeId : lastEpisode
       }`}
     >
-      <a
+      <span
         style={{
-          backgroundColor: `${color || '#000000'}`,
+          backgroundColor: `${color || "#000000"}`,
         }}
         className={`transition duration-300 text-sm md:text-base flex items-center px-3 py-2 rounded-md gap-x-1 hover:opacity-80`}
       >
@@ -31,9 +31,9 @@ const WatchLink = (props: WatchLinkProps): JSX.Element => {
         <p className="text-xs md:text-sm">
           {isExist
             ? `Continue Watching Episode ${currentWatchEpisode?.episodeNumber}`
-            : 'Watch Now'}
+            : "Watch Now"}
         </p>
-      </a>
+      </span>
     </Link>
   );
 };

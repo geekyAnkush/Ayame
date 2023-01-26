@@ -127,7 +127,7 @@ const Header = () => {
     >
       <div className="flex items-center gap-4 h-[52px] md:h-[67px] 2xl:h-[80px] px-[3%] w-full mx-auto max-w-screen-2xl">
         <Link href="/">
-          <a className="flex items-center text-white z-10">
+          <span className="flex items-center text-white z-10">
             <div className="flex">
               <Image
                 containerclassname="relative h-[20px] w-[20px] md:h-[24px] md:w-[24px]"
@@ -147,7 +147,7 @@ const Header = () => {
             <span className="text-sm md:text-[20px] 2xl:[30px] font-semibold uppercase">
               Ayame
             </span>
-          </a>
+          </span>
         </Link>
         <div
           className={classNames(
@@ -162,15 +162,13 @@ const Header = () => {
             <form>
               <div className="grid grid-cols-[34px_1fr] items-center">
                 <Link href={`/search?query=${query}`}>
-                  <a>
-                    <Button
-                      type="submit"
-                      className="text-slate-300 flex justify-center items-center"
-                      aria-label="submit anime search"
-                    >
-                      <AiOutlineSearch className="h-6 w-6" />
-                    </Button>
-                  </a>
+                  <Button
+                    type="submit"
+                    className="text-slate-300 flex justify-center items-center"
+                    aria-label="submit anime search"
+                  >
+                    <AiOutlineSearch className="h-6 w-6" />
+                  </Button>
                 </Link>
 
                 <Input

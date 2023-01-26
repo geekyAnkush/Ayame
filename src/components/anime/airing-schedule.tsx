@@ -1,16 +1,16 @@
-import React, { useMemo } from 'react';
-import dayjs from '@/src/lib/utils/time';
-import TitleName from '../shared/title-name';
-import useAiringSchedule from '@/hooks/useAiringSchedule';
-import Link from 'next/link';
-import { episodesTitle } from '@/src/lib/utils/index';
+import React, { useMemo } from "react";
+import dayjs from "@/src/lib/utils/time";
+import TitleName from "../shared/title-name";
+import useAiringSchedule from "@/hooks/useAiringSchedule";
+import Link from "next/link";
+import { episodesTitle } from "@/src/lib/utils/index";
 
 const AiringScheduling = () => {
   const { data: animeAired, isLoading } = useAiringSchedule();
 
   const getDate = useMemo(() => {
     const date = new Date();
-    const now = dayjs(date).format('LLLL');
+    const now = dayjs(date).format("LLLL");
     return now;
   }, []);
 
@@ -29,13 +29,13 @@ const AiringScheduling = () => {
             <div className="flex justify-between w-full text-white">
               <div className="flex gap-2 items-center">
                 <span className="text-slate-300 text-xs">
-                  {dayjs(anime.airingAt as number).format('LTS')}
+                  {dayjs(anime.airingAt as number).format("LTS")}
                 </span>
 
                 <Link href={`/anime/${anime.id}`}>
-                  <a className="hover:text-primary transition text-sm md:text-base">
+                  <span className="hover:text-primary transition text-sm md:text-base">
                     {anime.title.english || anime.title.romaji}
-                  </a>
+                  </span>
                 </Link>
               </div>
               <div>
@@ -44,9 +44,9 @@ const AiringScheduling = () => {
                     anime.title.romaji
                   )}-episode-${anime.episode}`}
                 >
-                  <a className="bg-black flex justify-center items-center h-[35px] w-[90px] md:w-[115px] text-sm rounded hover:bg-primary transition">
+                  <span className="bg-black flex justify-center items-center h-[35px] w-[90px] md:w-[115px] text-sm rounded hover:bg-primary transition">
                     {`Episode ${anime.episode}`}
-                  </a>
+                  </span>
                 </Link>
               </div>
             </div>

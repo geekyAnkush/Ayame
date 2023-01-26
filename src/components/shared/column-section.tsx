@@ -1,11 +1,11 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from './image';
-import classNames from 'classnames';
-import { base64SolidImage } from '@/src/lib/utils/image';
-import { TitleType } from 'types/types';
-import { IAnimeInfo, IAnimeResult } from '@consumet/extensions';
-import { title } from '@/lib/helper';
+import React from "react";
+import Link from "next/link";
+import Image from "./image";
+import classNames from "classnames";
+import { base64SolidImage } from "@/src/lib/utils/image";
+import { TitleType } from "types/types";
+import { IAnimeInfo, IAnimeResult } from "@consumet/extensions";
+import { title } from "@/lib/helper";
 
 type ColumnSectionProps = {
   data: IAnimeInfo | IAnimeResult;
@@ -22,7 +22,7 @@ const ColumnSection = ({
 }: ColumnSectionProps) => (
   <li
     className={classNames(
-      'flex h-20 md:h-22 items-center py-2 px-4 odd:bg-background-800 even:bg-background-900',
+      "flex h-20 md:h-22 items-center py-2 px-4 odd:bg-background-800 even:bg-background-900",
       className
     )}
   >
@@ -42,17 +42,17 @@ const ColumnSection = ({
     <div className="pl-2 self-start">
       <style jsx>{`
         .hover-text:hover {
-          color: ${data.color ? data.color : '#6a55fa'};
+          color: ${data.color ? data.color : "#6a55fa"};
         }
       `}</style>
       <Link href={`/anime/${data.id}`}>
-        <a
+        <span
           className={classNames(
-            'hover-text text-base font-semibold text-white transition duration-300 line-clamp-1'
+            "hover-text text-base font-semibold text-white transition duration-300 line-clamp-1"
           )}
         >
           {title(data.title as TitleType)}
-        </a>
+        </span>
       </Link>
       <div className="flex line-clamp-1 items-center space-x-2 text-sm text-slate-300">
         <span>{data.type}</span>
@@ -64,7 +64,7 @@ const ColumnSection = ({
 
       {isGenres ? (
         <div className="line-clamp-1 items-center space-x-2 text-sm text-slate-300">
-          {genres?.map(genre => (
+          {genres?.map((genre) => (
             <React.Fragment key={genre}>
               <span>{genre}</span>
               <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block"></span>

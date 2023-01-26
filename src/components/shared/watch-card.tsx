@@ -1,12 +1,12 @@
-import React from 'react';
-import { RecentType } from 'types/types';
-import Link from 'next/link';
-import Image from './image';
-import { base64SolidImage } from '@/src/lib/utils/image';
-import { PlayIcon } from '@heroicons/react/outline';
-import classNames from 'classnames';
-import Button from './button';
-import { MdBookmarkRemove } from 'react-icons/md';
+import React from "react";
+import { RecentType } from "types/types";
+import Link from "next/link";
+import Image from "./image";
+import { base64SolidImage } from "@/src/lib/utils/image";
+import { PlayIcon } from "@heroicons/react/outline";
+import classNames from "classnames";
+import Button from "./button";
+import { MdBookmarkRemove } from "react-icons/md";
 
 type WatchCardProps = {
   onClick?: () => void;
@@ -22,7 +22,7 @@ const WatchCard = (props: WatchCardProps) => {
           <div className="relative aspect-w-2 aspect-h-3">
             <div className="opacity-100">
               <Link href={`/anime/${id}`}>
-                <a aria-label={`${title}`}>
+                <span aria-label={`${title}`}>
                   <Image
                     layout="fill"
                     src={`${image}`}
@@ -35,18 +35,18 @@ const WatchCard = (props: WatchCardProps) => {
                     alt={`Anime - ${title}`}
                     containerclassname="relative w-full h-full hover:opacity-70 transition-opacity"
                   />
-                </a>
+                </span>
               </Link>
             </div>
             <Link href={`/watch/${id}?episode=${episodeId}`}>
-              <a
+              <span
                 aria-label={`Play - ${title} episode ${episodeNumber}`}
                 className="center-element flex justify-center items-center w-[101%] h-full opacity-0 hover:opacity-100 focus:opacity-100 hover:bg-[#1111117a] transition"
               >
                 <div className="text-primary text-center flex flex-col items-center">
                   <PlayIcon className="h-11 w-11 md:h-16 md:w-16" />
                 </div>
-              </a>
+              </span>
             </Link>
           </div>
           <Button
@@ -59,16 +59,16 @@ const WatchCard = (props: WatchCardProps) => {
             Episode {episodeNumber}
           </h4>
           <Link href={`/anime/${id}`}>
-            <a
+            <span
               style={{
-                color: `${color ? color : '#fff'}`,
+                color: `${color ? color : "#fff"}`,
               }}
               className={classNames(
-                'line-clamp-2 w-full h-auto text-left text-sm md:text-base hover:text-white font-semibold'
+                "line-clamp-2 w-full h-auto text-left text-sm md:text-base hover:text-white font-semibold"
               )}
             >
               {title as string}
-            </a>
+            </span>
           </Link>
         </div>
       </div>

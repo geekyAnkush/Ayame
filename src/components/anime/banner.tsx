@@ -1,22 +1,22 @@
-import React from 'react';
-import Link from 'next/link';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper';
-import Icon from '@/components/shared/icon';
-import Genre from '@/components/shared/genre';
-import { PlayIcon, InformationCircleIcon } from '@heroicons/react/solid';
-import { TitleType } from '@/src/../types/types';
-import { episodesTitle, stripHtml } from '@/src/lib/utils/index';
+import React from "react";
+import Link from "next/link";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
+import Icon from "@/components/shared/icon";
+import Genre from "@/components/shared/genre";
+import { PlayIcon, InformationCircleIcon } from "@heroicons/react/solid";
+import { TitleType } from "@/src/../types/types";
+import { episodesTitle, stripHtml } from "@/src/lib/utils/index";
 import {
   IAnimeInfo,
   IAnimeResult,
   ISearch,
-} from '@consumet/extensions/dist/models/types';
-import { title } from '@/lib/helper';
-import { LoadingBanner } from '../shared/loading';
+} from "@consumet/extensions/dist/models/types";
+import { title } from "@/lib/helper";
+import { LoadingBanner } from "../shared/loading";
 
 export interface BannerResult extends IAnimeResult {
   title: TitleType;
@@ -44,7 +44,7 @@ const Banner = ({ animeList, isLoading }: BannerProps): JSX.Element =>
       modules={[Autoplay, Pagination, Navigation]}
       className="mySwiper"
     >
-      {animeList?.results?.map(anime => (
+      {animeList?.results?.map((anime) => (
         <SwiperSlide key={anime.id}>
           <div className="relative w-full h-[326px] md:h-[450px] min-h-[326px] md:min-h-[450px] 2xl:h-[620px] 2xl:min-h-[620px]">
             <div className="relative flex items-center w-full h-full shrink-0">
@@ -74,14 +74,14 @@ const Banner = ({ animeList, isLoading }: BannerProps): JSX.Element =>
                       anime?.title?.romaji as string
                     )}-episode-1`}
                   >
-                    <a className="mt-4 py-2 px-4 bg-primary text-gray-200 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary hover:scale-105 transition-all ease-in-out rounded-md">
+                    <span className="mt-4 py-2 px-4 bg-primary text-gray-200 font-semibold flex items-center justify-center gap-2 hover:bg-primary hover:scale-105 transition-all ease-in-out rounded-md">
                       <Icon icon={PlayIcon} text={`Play Now`} />
-                    </a>
+                    </span>
                   </Link>
                   <Link href={`/anime/${anime?.id}`}>
-                    <a className="mt-4 py-2 px-4 bg-[#6e6f74] text-gray-200 rounded-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary hover:scale-105 transition-all ease-in-out rounded-md">
+                    <span className="mt-4 py-2 px-4 bg-[#6e6f74] text-gray-200 font-semibold flex items-center justify-center gap-2 hover:bg-primary hover:scale-105 transition-all ease-in-out rounded-md">
                       <Icon icon={InformationCircleIcon} text={`Read More`} />
-                    </a>
+                    </span>
                   </Link>
                 </div>
               </div>

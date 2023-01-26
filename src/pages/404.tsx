@@ -1,6 +1,6 @@
-import { NextSeo } from 'next-seo';
-import Link from 'next/link';
-import React from 'react';
+import { NextSeo } from "next-seo";
+import Link from "next/link";
+import React from "react";
 
 const ErrorPage = () => {
   return (
@@ -16,7 +16,7 @@ const ErrorPage = () => {
             <span className="text-lg">
               Welcome to
               <span className="text-primary opacity-300">
-                {' '}
+                {" "}
                 the 404 dimension
               </span>
             </span>
@@ -28,16 +28,14 @@ const ErrorPage = () => {
             But unfortunately, this dimension has nothing at all
           </p>
           <Link href="/">
-            <a>
-              <button
-                type="button"
-                className="transition duration-300 text-base flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 mt-8 hover:bg-primary border-2 border-primary"
-              >
-                <p className="text-lg text-slate-300">
-                  Go back to the old dimension
-                </p>
-              </button>
-            </a>
+            <button
+              type="button"
+              className="transition duration-300 text-base flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 mt-8 hover:bg-primary border-2 border-primary"
+            >
+              <p className="text-lg text-slate-300">
+                Go back to the old dimension
+              </p>
+            </button>
           </Link>
         </div>
       </div>
