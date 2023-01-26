@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import classNames from "classnames";
 import { AiFillDatabase } from "react-icons/ai";
 import { useDispatch, useSelector } from "@/store/store";
-import { setEpisodeId, setServer } from "@/store/watch/slice";
+import { setEpisodeId, setProviders, setServer } from "@/store/watch/slice";
 import {
   EpisodesType,
   RecentType,
@@ -96,6 +96,10 @@ const Video = (props: VideoProps): JSX.Element => {
     return dayjs.unix(nextAiringEpisode?.airingTime).fromNow();
   }, [nextAiringEpisode?.airingTime]);
 
+  const handleChangeProvider = (provider: string) => {
+    dispatch(setProviders(provider));
+  };
+
   return (
     <div
       className={classNames(
@@ -132,12 +136,24 @@ const Video = (props: VideoProps): JSX.Element => {
                 </h4>
                 <Button
                   disabled={server === "server 1" ? true : false}
-                  // onClick={handleChangeProvider}
-                  onClick={() => dispatch(setServer("server 1"))}
+                  onClick={() => {
+                    dispatch(setServer("server 1"));
+                    handleChangeProvider("gogoanime");
+                  }}
                   className="bg-primary p-2 text-xs rounded-md uppercase font-semibold"
                 >
                   server 1
                 </Button>
+                {/* <Button
+                  disabled={server === "server 2" ? true : false}
+                  onClick={() => {
+                    dispatch(setServer("server 2"));
+                    handleChangeProvider("zoro");
+                  }}
+                  className="bg-primary p-2 text-xs rounded-md uppercase font-semibold"
+                >
+                  server 2
+                </Button> */}
               </div>
               {nextAiringEpisode && (
                 <div className="text-sm text-primary flex flex-col">

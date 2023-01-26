@@ -1,7 +1,7 @@
-import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
-import { CORS_PROXY } from '@/src/lib/constant';
-import { IAnimeResult, IVideo } from '@consumet/extensions/dist/models/types';
-import { EnimeSource } from 'types/types';
+import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
+import { CORS_PROXY } from "@/src/lib/constant";
+import { IAnimeResult, IVideo } from "@consumet/extensions/dist/models/types";
+import { EnimeSource } from "types/types";
 
 export interface WatchState {
   animeList: IAnimeResult;
@@ -23,25 +23,25 @@ export interface IInitialState {
 const initialState: IInitialState = {
   episode: 1,
   totalEpisodes: 1,
-  episodeId: '',
+  episodeId: "",
   sources: [],
-  currentSource: '',
-  videoLink: '',
-  provider: 'gogoanime',
-  server: 'server 1',
+  currentSource: "",
+  videoLink: "",
+  provider: "gogoanime",
+  server: "server 1",
   dub: false,
   enimeSource: {
-    id: '',
-    url: '',
-    referer: '',
+    id: "",
+    url: "",
+    referer: "",
     priority: 1,
     browser: true,
-    website: 'https://gogoanime.ar',
+    website: "https://gogoanime.run",
   },
 };
 
 export const watchSlice = createSlice({
-  name: 'watch',
+  name: "watch",
   initialState,
   reducers: {
     setEpisodes: (state: Draft<IInitialState>, action) => {
@@ -78,8 +78,8 @@ export const watchSlice = createSlice({
       } else {
         state.sources = action.payload;
         state.videoLink = `${CORS_PROXY}${
-          sources.find(el => el.quality === 'default')?.url ||
-          sources.find(el => el.quality === 'backup')?.url
+          sources.find((el) => el.quality === "default")?.url ||
+          sources.find((el) => el.quality === "backup")?.url
         }`;
       }
     },
