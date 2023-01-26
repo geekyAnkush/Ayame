@@ -1,19 +1,19 @@
-import React, { useEffect, useMemo } from 'react';
-import progressBar from '@/components/shared/loading';
-import { TYPE, FORMAT, SORT } from '@/src/lib/constant';
-import RecentRelease from '@/components/anime/recentRelease';
-import Popular from '@/components/anime/popular';
-import { getSeason } from '../lib/utils';
-import { useDispatch } from '@/store/store';
-import { resetStates } from '@/store/watch/slice';
-import Row from '@/components/anime/row';
-import useMedia from '@/hooks/useMedia';
-import Genres from '@/components/anime/genres';
-import AiringScheduling from '@/components/anime/airing-schedule';
-import DefaultLayout from '@/components/layouts/default';
-import ClientOnly from '@/components/shared/client-only';
-import ContinueWatching from '@/components/anime/continue-watching';
-import Banner from '@/components/anime/banner';
+import React, { useEffect, useMemo } from "react";
+import progressBar from "@/components/shared/loading";
+import { TYPE, FORMAT, SORT } from "@/src/lib/constant";
+import RecentRelease from "@/components/anime/recentRelease";
+import Popular from "@/components/anime/popular";
+import { getSeason } from "../lib/utils";
+import { useDispatch } from "@/store/store";
+import { resetStates } from "@/store/watch/slice";
+import Row from "@/components/anime/row";
+import useMedia from "@/hooks/useMedia";
+import Genres from "@/components/anime/genres";
+import AiringScheduling from "@/components/anime/airing-schedule";
+import DefaultLayout from "@/components/layouts/default";
+import ClientOnly from "@/components/shared/client-only";
+import ContinueWatching from "@/components/anime/continue-watching";
+import Banner from "@/components/anime/banner";
 
 const HomePage = () => {
   progressBar.finish();
@@ -77,7 +77,7 @@ const HomePage = () => {
   return (
     <ClientOnly>
       <DefaultLayout>
-        <div className="w-full h-full bg-center bg-top overflow-hidden bg-cover px-0 md:px-[3%]">
+        <div className="w-full h-full bg-center overflow-hidden bg-cover px-0 md:px-[3%]">
           <Banner animeList={trendingAnime} isLoading={trendingAnimeLoading} />
         </div>
         <main className="mt-[40px] px-[3%]">
