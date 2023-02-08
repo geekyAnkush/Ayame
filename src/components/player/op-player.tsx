@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from "react";
-import Player from "@oplayer/core";
-import ui from "@oplayer/ui";
-import hls from "@oplayer/hls";
-import { Highlight } from "@oplayer/ui/dist/types";
-import { useSelector } from "@/store/store";
-import { AniSkip } from "types/types";
-import skipOpEd from "@/lib/player/plugin";
+import React, { useRef, useEffect } from 'react';
+import Player from '@oplayer/core';
+import ui from '@oplayer/ui';
+import hls from '@oplayer/hls';
+import { Highlight } from '@oplayer/ui/dist/types';
+import { useSelector } from '@/store/store';
+import { AniSkip } from 'types/types';
+import skipOpEd from '@/lib/player/plugin';
 
 type PlayerProps = {
   poster: string;
@@ -15,7 +15,7 @@ type PlayerProps = {
 
 const OPlayer = (props: PlayerProps) => {
   const { poster, episodeNumber, malId } = props;
-  const videoLink = useSelector((store) => store.watch.videoLink);
+  const videoLink = useSelector(store => store.watch.videoLink);
   const playerContainerRef = useRef<HTMLDivElement | null>(null);
 
   const playerRef = useRef<Player>();
@@ -34,7 +34,7 @@ const OPlayer = (props: PlayerProps) => {
       .use([
         skipOpEd(),
         ui({
-          theme: { primaryColor: "#6a55fa" },
+          theme: { primaryColor: '#6a55fa' },
           pictureInPicture: true,
           subtitle: {
             source: [],
@@ -45,7 +45,7 @@ const OPlayer = (props: PlayerProps) => {
               '<img class="animate-spin text-white h-12" src="/loading.svg">',
           },
         }),
-        hls(),
+        hls({ matcher: () => true }),
       ])
       .create();
   }, []);
@@ -76,31 +76,31 @@ const OPlayer = (props: PlayerProps) => {
 
             if (data.statusCode === 200) {
               for (let result of data.results) {
-                if (result.skipType === "op" || result.skipType === "ed") {
+                if (result.skipType === 'op' || result.skipType === 'ed') {
                   const { startTime, endTime } = result.interval;
 
                   if (startTime) {
                     highlights.push({
                       time: startTime,
-                      text: result.skipType === "op" ? "OP" : "ED",
+                      text: result.skipType === 'op' ? 'OP' : 'ED',
                     });
-                    if (result.skipType === "op") opDuration.push(startTime);
+                    if (result.skipType === 'op') opDuration.push(startTime);
                     else edDuration.push(startTime);
                   }
 
                   if (endTime) {
                     highlights.push({
                       time: endTime,
-                      text: result.skipType === "op" ? "OP" : "ED",
+                      text: result.skipType === 'op' ? 'OP' : 'ED',
                     });
-                    if (result.skipType === "op") opDuration.push(endTime);
+                    if (result.skipType === 'op') opDuration.push(endTime);
                     else edDuration.push(endTime);
                   }
                 }
               }
             }
-            playerRef.current?.emit("opedchange", [opDuration, edDuration]);
-            // playerRef.current?.plugins?.ui?.highlight(highlights);
+            playerRef.current?.emit('opedchange', [opDuration, edDuration]);
+            playerRef.current?.plugins.ui.highlight(highlights);
           })();
         });
     }
