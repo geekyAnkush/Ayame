@@ -1,26 +1,25 @@
-import React, { useEffect, useMemo } from "react";
-import classNames from "classnames";
-import { AiFillDatabase } from "react-icons/ai";
-import { useDispatch, useSelector } from "@/store/store";
-import { setEpisodeId, setProviders, setServer } from "@/store/watch/slice";
+import React, { useEffect, useMemo } from 'react';
+import classNames from 'classnames';
+import { AiFillDatabase } from 'react-icons/ai';
+import { useDispatch, useSelector } from '@/store/store';
+import { setEpisodeId, setServer } from '@/store/watch/slice';
 import {
   EpisodesType,
   RecentType,
   NextAiringEpisode,
-} from "@/src/../types/types";
-import { TbPlayerTrackNext, TbPlayerTrackPrev } from "react-icons/tb";
-import Button from "@/components/shared/button";
-import Storage from "@/src/lib/utils/storage";
-import OPlayer from "@/components/player/op-player";
-import { LoadingVideo } from "@/components/shared/loading";
-import { IAnimeInfo } from "@consumet/extensions/dist/models/types";
-import dayjs from "@/lib/utils/time";
+} from '@/src/../types/types';
+import { TbPlayerTrackNext, TbPlayerTrackPrev } from 'react-icons/tb';
+import Button from '@/components/shared/button';
+import Storage from '@/src/lib/utils/storage';
+import OPlayer from '@/components/player/op-player';
+import { LoadingVideo } from '@/components/shared/loading';
+import { IAnimeInfo } from '@consumet/extensions/dist/models/types';
+import dayjs from '@/lib/utils/time';
 
 type VideoProps = {
   data: IAnimeInfo;
   id: string;
   color: string;
-  title: string;
   image: string;
   nextAiringEpisode: NextAiringEpisode;
   animeTitle: string;
@@ -39,7 +38,6 @@ const Video = (props: VideoProps): JSX.Element => {
     id,
     color,
     image,
-    title,
     nextAiringEpisode,
     poster,
     episodeId,
@@ -52,36 +50,36 @@ const Video = (props: VideoProps): JSX.Element => {
   } = props;
 
   const dispatch = useDispatch();
-  const [animeId, server, totalEpisodes] = useSelector((store) => [
+  const [animeId, server, totalEpisodes] = useSelector(store => [
     store.anime.animeId,
     store.watch.server,
     store.watch.totalEpisodes,
   ]);
 
   useEffect(() => {
-    const storage = new Storage("recentWatched");
+    const storage = new Storage('recentWatched');
     if (storage.has({ episodeId })) return;
 
     const list =
-      typeof window !== "undefined" &&
+      typeof window !== 'undefined' &&
       storage.findOne<RecentType>({ id: animeId });
 
     if (list) {
-      typeof window !== "undefined" &&
+      typeof window !== 'undefined' &&
         storage.update(list, {
+          animeTitle,
           color,
           image,
-          animeTitle,
           episodeNumber,
           episodeId,
           id,
         });
     } else {
-      typeof window !== "undefined" &&
+      typeof window !== 'undefined' &&
         storage.create({
+          animeTitle,
           color,
           image,
-          title,
           episodeNumber,
           episodeId,
           id,
@@ -96,14 +94,10 @@ const Video = (props: VideoProps): JSX.Element => {
     return dayjs.unix(nextAiringEpisode?.airingTime).fromNow();
   }, [nextAiringEpisode?.airingTime]);
 
-  const handleChangeProvider = (provider: string) => {
-    dispatch(setProviders(provider));
-  };
-
   return (
     <div
       className={classNames(
-        "flex flex-col col-start-1 col-end-6 md:col-start-1 xl:col-start-2 md:col-end-6 w-full",
+        'flex flex-col col-start-1 col-end-6 md:col-start-1 xl:col-start-2 md:col-end-6 w-full',
         className
       )}
     >
@@ -135,25 +129,13 @@ const Video = (props: VideoProps): JSX.Element => {
                   providers:
                 </h4>
                 <Button
-                  disabled={server === "server 1" ? true : false}
-                  onClick={() => {
-                    dispatch(setServer("server 1"));
-                    handleChangeProvider("gogoanime");
-                  }}
+                  disabled={server === 'server 1' ? true : false}
+                  // onClick={handleChangeProvider}
+                  onClick={() => dispatch(setServer('server 1'))}
                   className="bg-primary p-2 text-xs rounded-md uppercase font-semibold"
                 >
                   server 1
                 </Button>
-                {/* <Button
-                  disabled={server === "server 2" ? true : false}
-                  onClick={() => {
-                    dispatch(setServer("server 2"));
-                    handleChangeProvider("zoro");
-                  }}
-                  className="bg-primary p-2 text-xs rounded-md uppercase font-semibold"
-                >
-                  server 2
-                </Button> */}
               </div>
               {nextAiringEpisode && (
                 <div className="text-sm text-primary flex flex-col">
