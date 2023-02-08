@@ -36,7 +36,7 @@ const initialState: IInitialState = {
     referer: "",
     priority: 1,
     browser: true,
-    website: "https://gogoanime.run",
+    website: "https://gogoanime.ar",
   },
 };
 
@@ -98,7 +98,7 @@ export const watchSlice = createSlice({
         state.enimeSource = initialState.enimeSource;
       } else {
         state.enimeSource = enimeSources;
-        state.videoLink = state.enimeSource.url;
+        state.videoLink = CORS_PROXY + state.enimeSource.url;
       }
     },
     resetSources: (state: Draft<IInitialState>) => {

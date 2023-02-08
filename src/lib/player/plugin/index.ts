@@ -1,6 +1,6 @@
 //github.com/shiyiya/oplayer/issues/41
 
-import { $ } from '@oplayer/core';
+import { $ } from "@oplayer/core";
 
 /**
  *
@@ -9,9 +9,9 @@ import { $ } from '@oplayer/core';
  */
 
 const skipOpEd = () => ({
-  name: 'skip-op-ed-plugin',
+  name: "skip-op-ed-plugin",
   // @ts-ignore
-  apply: player => {
+  apply: (player) => {
     const pos = $.css(`
       display: none;
       position: absolute;
@@ -53,7 +53,7 @@ const skipOpEd = () => ({
       }
     };
 
-    player.on(['timeupdate', 'seeked'], () => {
+    player.on(["timeupdate", "seeked"], () => {
       // @ts-ignore
       let [opDuration, edDuration] = durations;
 
@@ -68,16 +68,16 @@ const skipOpEd = () => ({
       )
         timeInRange = true;
 
-      if (!timeInRange) $dom.style.display = 'none';
-      else $dom.style.display = 'block';
+      if (!timeInRange) $dom.style.display = "none";
+      else $dom.style.display = "block";
     });
 
     // @ts-ignore
-    player.on('opedchange', ({ payload }) => {
+    player.on("opedchange", ({ payload }) => {
       durations = payload;
     });
 
-    player.on('videosourcechange', () => {
+    player.on("videosourcechange", () => {
       durations = [];
     });
 
