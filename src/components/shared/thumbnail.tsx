@@ -1,21 +1,21 @@
-import React, { useMemo } from "react";
-import Link from "next/link";
-import { Options } from "@popperjs/core";
-import { base64SolidImage } from "@/src/lib/utils/image";
-import { PlayIcon } from "@heroicons/react/outline";
-import { EnimeType, TitleType } from "@/src/../types/types";
-import Image from "@/components/shared/image";
-import classNames from "classnames";
-import Popup from "./popup";
-import { stripHtml } from "@/src/lib/utils/index";
-import Genre from "./genre";
-import Icon from "./icon";
-import { FaThumbsUp, FaPlay } from "react-icons/fa";
-import { AiFillClockCircle } from "react-icons/ai";
-import { BsEmojiSmile } from "react-icons/bs";
-import { IAnimeInfo } from "@consumet/extensions/dist/models/types";
-import { title } from "@/lib/helper";
-import dayjs from "@/lib/utils/time";
+import React, { useMemo } from 'react';
+import Link from 'next/link';
+import { Options } from '@popperjs/core';
+import { base64SolidImage } from '@/src/lib/utils/image';
+import { PlayIcon } from '@heroicons/react/outline';
+import { EnimeType, TitleType } from '@/src/../types/types';
+import Image from '@/components/shared/image';
+import classNames from 'classnames';
+import Popup from './popup';
+import { stripHtml } from '@/src/lib/utils/index';
+import Genre from './genre';
+import Icon from './icon';
+import { FaThumbsUp, FaPlay } from 'react-icons/fa';
+import { AiFillClockCircle } from 'react-icons/ai';
+import { BsEmojiSmile } from 'react-icons/bs';
+import { IAnimeInfo } from '@consumet/extensions/dist/models/types';
+import { title } from '@/lib/helper';
+import dayjs from '@/lib/utils/time';
 
 export type ThumbnailProps = {
   data: IAnimeInfo | EnimeType;
@@ -31,18 +31,18 @@ export type ThumbnailProps = {
 };
 
 const popupOptions: Partial<Options> = {
-  strategy: "absolute",
+  strategy: 'absolute',
 
   modifiers: [
     {
-      name: "sameWidth",
+      name: 'sameWidth',
       enabled: true,
       fn: ({ state }) => {
         state.styles.popper.height = `${state.rects.reference.height}px`;
         state.styles.popper.width = `${state.rects.reference.width * 3}px`;
       },
-      phase: "beforeWrite",
-      requires: ["computeStyles"],
+      phase: 'beforeWrite',
+      requires: ['computeStyles'],
       effect({ state }) {
         const { width, height } =
           state.elements.reference.getBoundingClientRect();
@@ -94,7 +94,7 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
               <div className="relative aspect-w-2 aspect-h-3">
                 <div className="opacity-100">
                   <Link href={`/anime/${data.id}`}>
-                    <span aria-label={title(data.title as TitleType)}>
+                    <a aria-label={title(data.title as TitleType)}>
                       <Image
                         layout="fill"
                         src={`${image}`}
@@ -107,7 +107,7 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
                         alt={`Anime - ${title(data.title as TitleType)}`}
                         containerclassname="relative w-full h-full hover:opacity-70 transition-opacity"
                       />
-                    </span>
+                    </a>
                   </Link>
                 </div>
                 {isRecent ? (
@@ -116,7 +116,7 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
                       data.anilistId || data.id
                     }?episode=${episodeId}`}
                   >
-                    <span
+                    <a
                       aria-label={`Play - ${title(
                         data.title as TitleType
                       )} episode ${episodeNumber}`}
@@ -125,7 +125,7 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
                       <div className="h-11 w-11 text-primary">
                         <PlayIcon />
                       </div>
-                    </span>
+                    </a>
                   </Link>
                 ) : null}
               </div>
@@ -133,14 +133,14 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
           </div>
 
           <Link href={`/anime/${data.anilistId}`}>
-            <span
-              style={{ color: `${data.color ? data.color : "#fff"}` }}
+            <a
+              style={{ color: `${data.color ? data.color : '#fff'}` }}
               className={classNames(
-                "line-clamp-2 w-full h-auto p-1 text-left text-sm md:text-base hover:text-white font-semibold"
+                'line-clamp-2 w-full h-auto p-1 text-left text-sm md:text-base hover:text-white font-semibold'
               )}
             >
               {title(data.title as TitleType)}
-            </span>
+            </a>
           </Link>
         </div>
       }
@@ -183,8 +183,8 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
         {isRecent && (
           <p className="line-clamp-4 text-sm">
             {stripHtml(
-              `${description ? description : "No Episode Description"}`
-            ) || stripHtml(`${data.description}` || "No Description")}
+              `${description ? description : 'No Episode Description'}`
+            ) || stripHtml(`${data.description}` || 'No Description')}
           </p>
         )}
         {!isRecent && (
@@ -197,7 +197,7 @@ const Thumbnail = (props: ThumbnailProps): JSX.Element => {
           </div>
         )}
         <div className="hidden mr-2 md:flex flex-wrap gap-2 mt-2">
-          {genres?.map((genre) => (
+          {genres?.map(genre => (
             <div className="flex items-center gap-2" key={genre}>
               <Genre genre={genre} className="text-base" />
               <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block"></span>

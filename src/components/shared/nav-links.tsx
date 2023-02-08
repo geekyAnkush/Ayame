@@ -1,5 +1,5 @@
-import React, { SVGProps } from "react";
-import Link, { LinkProps } from "next/link";
+import React, { SVGProps } from 'react';
+import Link, { LinkProps } from 'next/link';
 
 type NavLinksProps = {
   icon: React.FC<SVGProps<any>>;
@@ -15,12 +15,12 @@ const NavLink = (props: NavLinksProps) => {
   return (
     <li>
       <Link {...linkProps}>
-        <span className={className}>
+        <a className={className}>
           <span>
             <Icon className={iconClassName} />
           </span>
           <span>{name}</span>
-        </span>
+        </a>
       </Link>
     </li>
   );

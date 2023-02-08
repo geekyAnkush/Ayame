@@ -1,19 +1,20 @@
-import React from "react";
-import { RecentType } from "types/types";
-import Link from "next/link";
-import Image from "./image";
-import { base64SolidImage } from "@/src/lib/utils/image";
-import { PlayIcon } from "@heroicons/react/outline";
-import classNames from "classnames";
-import Button from "./button";
-import { MdBookmarkRemove } from "react-icons/md";
+import React from 'react';
+import { RecentType } from 'types/types';
+import Link from 'next/link';
+import Image from './image';
+import { base64SolidImage } from '@/src/lib/utils/image';
+import { PlayIcon } from '@heroicons/react/outline';
+import classNames from 'classnames';
+import Button from './button';
+import { MdBookmarkRemove } from 'react-icons/md';
 
 type WatchCardProps = {
   onClick?: () => void;
 } & RecentType;
 
 const WatchCard = (props: WatchCardProps) => {
-  const { id, title, image, color, episodeNumber, episodeId, onClick } = props;
+  const { id, animeTitle, image, color, episodeNumber, episodeId, onClick } =
+    props;
 
   return (
     <div className="col-span-1">
@@ -22,7 +23,7 @@ const WatchCard = (props: WatchCardProps) => {
           <div className="relative aspect-w-2 aspect-h-3">
             <div className="opacity-100">
               <Link href={`/anime/${id}`}>
-                <span aria-label={`${title}`}>
+                <a aria-label={`${animeTitle}`}>
                   <Image
                     layout="fill"
                     src={`${image}`}
@@ -32,21 +33,21 @@ const WatchCard = (props: WatchCardProps) => {
                       color as string
                     )}`}
                     className="rounded-lg"
-                    alt={`Anime - ${title}`}
+                    alt={`Anime - ${animeTitle}`}
                     containerclassname="relative w-full h-full hover:opacity-70 transition-opacity"
                   />
-                </span>
+                </a>
               </Link>
             </div>
             <Link href={`/watch/${id}?episode=${episodeId}`}>
-              <span
-                aria-label={`Play - ${title} episode ${episodeNumber}`}
+              <a
+                aria-label={`Play - ${animeTitle} episode ${episodeNumber}`}
                 className="center-element flex justify-center items-center w-[101%] h-full opacity-0 hover:opacity-100 focus:opacity-100 hover:bg-[#1111117a] transition"
               >
                 <div className="text-primary text-center flex flex-col items-center">
                   <PlayIcon className="h-11 w-11 md:h-16 md:w-16" />
                 </div>
-              </span>
+              </a>
             </Link>
           </div>
           <Button
@@ -59,16 +60,16 @@ const WatchCard = (props: WatchCardProps) => {
             Episode {episodeNumber}
           </h4>
           <Link href={`/anime/${id}`}>
-            <span
+            <a
               style={{
-                color: `${color ? color : "#fff"}`,
+                color: `${color ? color : '#fff'}`,
               }}
               className={classNames(
-                "line-clamp-2 w-full h-auto text-left text-sm md:text-base hover:text-white font-semibold"
+                'line-clamp-2 w-full h-auto text-left text-sm md:text-base hover:text-white font-semibold'
               )}
             >
-              {title as string}
-            </span>
+              {animeTitle as string}
+            </a>
           </Link>
         </div>
       </div>
