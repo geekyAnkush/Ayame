@@ -1,4 +1,4 @@
-import { TitleType } from 'types/types';
+import { TitleType } from "types/types";
 
 export function title(title: TitleType): string {
   return title?.userPreferred &&
