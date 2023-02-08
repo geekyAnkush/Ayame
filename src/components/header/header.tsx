@@ -3,7 +3,8 @@ import { META } from "@consumet/extensions";
 import { IAnimeResult } from "@consumet/extensions/dist/models/types";
 import Link from "next/link";
 import classNames from "classnames";
-import logo from "../../../public/ayame.webp";
+import logo from "../../../public/animehi.svg";
+import h from "../../../public/h.png";
 import Image from "../shared/image";
 import { FaRandom } from "react-icons/fa";
 import {
@@ -19,7 +20,6 @@ import debounce from "lodash/debounce";
 import ColumnSection from "@/components/shared/column-section";
 import { isMobile } from "react-device-detect";
 import useClickOutside from "@/hooks/useClickOutside";
-
 const LINKS = [
   {
     href: "/",
